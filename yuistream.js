@@ -56,7 +56,7 @@ $(document).ready(function(){
         var g=anime.length;
         var e=$(".--tab-eps");
         for(var h=0;h<g;h++){
-            e.append("<a class='ganti-eps' data-id='"+h+"' data-eps='Episode "+(h+1)+"'>"+(h+1)+"</a>")
+            e.append("<a class='ganti-eps' data-id='"+h+"' data-eps='Streaming Episode "+(parseInt(eps)+parseInt(h+1))+"'>"+(parseInt(eps)+parseInt(h+1))+"</a>")
         }
         var f=$(".--show-video");
         $(".ganti-eps").click(function(){
