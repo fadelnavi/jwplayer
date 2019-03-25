@@ -66,7 +66,7 @@ $(document).ready(function(){
 				type:"GET",
 				dataType:"JSON",
 				success: function(s){
-					 $.each(s.urls, function() {
+					 $.map(s.urls, function() {
 				        //$('.download').append("<li><a href=\""+this.id+"\">"+this.label+"</a></li>");
 				        return '{"type": "video/mp4", "label": "'this.label'", "file": "'+this.id+'"},';				        
 				     });
