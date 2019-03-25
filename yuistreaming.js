@@ -52,7 +52,13 @@ var jwDefaults = {
 jwplayer.defaults = jwDefaults;
 
 $(document).ready(function(){
-    (function yuistreams(iddrive){
+    (function(){
+        var g=anime.length;
+        var e=$(".--tab-eps");
+        for(var h=0;h<g;h++){
+            e.append("<a class='ganti-eps' data-id='"+h+"' data-eps='Episode "+(h+1)+"'>"+(h+1)+"</a>")
+        }
+	function yuistreams(iddrive){
         		$.ajax({
 				url:"https://www.saveoffline.com/process/?url=https://drive.google.com/file/d/"+iddrive+"/view&type=json",
 				type:"GET",
@@ -65,14 +71,7 @@ $(document).ready(function(){
 
 				}	
 			});
-        	}
-	    
-	function(){
-        var g=anime.length;
-        var e=$(".--tab-eps");
-        for(var h=0;h<g;h++){
-            e.append("<a class='ganti-eps' data-id='"+h+"' data-eps='Episode "+(h+1)+"'>"+(h+1)+"</a>")
-        }
+          }
         var f=$(".--show-video");
         $(".ganti-eps").click(function(){
             var playerInstance = jwplayer("player");
