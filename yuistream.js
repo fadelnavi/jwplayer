@@ -53,8 +53,8 @@ jwplayer.defaults = jwDefaults;
 
 $(document).ready(function(){
     (function(){
-        var xs=anime.length;
-        for(var h=0;h<xs;h++){
+        var g=anime.length;
+        for(var h=0;h<g;h++){
             /*$('#dw').append("<a class='ganti-eps' data-id='"+h+"' data-eps='Streaming Episode "+(parseInt(eps)+parseInt(h+1))+"'>Episode "+(parseInt(eps)+parseInt(h+1))+"</a>")*/
             var yuieps = (parseInt(eps)+1);
             //$('.download').append("<tr><td id=\"eps"+yuieps+"\"> Episode"+yuieps+"</td></tr>");
