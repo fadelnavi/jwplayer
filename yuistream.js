@@ -51,4 +51,88 @@ var jwDefaults = {
 };
 jwplayer.defaults = jwDefaults;
 
-eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('$(u).v(b(){(b(){4 g=6.w;4 e=$(".--x-2");y(4 h=0;h<g;h++){e.z("<a A=\'m-2\' 5-7=\'"+h+"\' 5-2=\'B C "+(3(2)+3(h+1))+"\'>"+(3(2)+3(h+1))+"</a>")}4 f=$(".--D-n");$(".m-2").E(b(){4 a=F("G");a.H({I:[{"J":"n/K","c":"L","8":"d://M.N.i/o/O/P/"+6[3($(j).5("7"))]+"?Q=R&S=T-U-V"}],W:"d://o.X.i/Y?7="+6[3($(j).5("7"))]+"&Z=0&10=11-12",13:14,15:k,17:"p%",18:"p%",19:"16:9",1a:"1b-1c",1d:"//q.r/",1e:[{8:"",c:"1f",s:"l","t":k},{8:"",c:"1g",s:"l","t":k}],1h:{8:\'d://1.1i.1j.i/-1k/1l/1m/1n/1o/1p.1q\',1r:\'//q.r\',1s:\'1t-1u\'},l:{1v:\'#1w\',1x:\'0\',1y:\'1z\'}});$("#--1A-6").1B($(j).5("2"))})}())});',62,100,'||eps|parseInt|var|data|anime|id|file|||function|label|https|||||com|this|true|captions|ganti|video|drive|100|akani|me|kind|default|document|ready|length|tab|for|append|class|Streaming|Episode|show|click|jwplayer|player|setup|sources|type|mp4|Akanime|www|googleapis|v3|files|alt|media|key|AIzaSyCNHA|ypi4a2i_OHrpfbGAL9W|hrIV4_zI|image|google|thumbnail|authuser|sz|w1280|h720|autostart|false|controls||width|height|aspectratio|abouttext|Yui|Stream|aboutlink|tracks|Indonesia|English|logo|bp|blogspot|WGBtOfDSI7Q|XG3l2S_MvkI|AAAAAAAAAi8|SgGc_gNAcyUWCuB326iqzJuc4aRBsHsrQCK4BGAYYCw|s1600|logoputih|png|link|position|control|bar|color|ffcc00|backgroundOpacity|edgeStyle|uniform|title|text'.split('|'),0,{}))
+$(document).ready(function(){
+    (function(){
+        var xs=anime.length;
+        for(var h=0;h<xs;h++){
+            /*$('#dw').append("<a class='ganti-eps' data-id='"+h+"' data-eps='Streaming Episode "+(parseInt(eps)+parseInt(h+1))+"'>Episode "+(parseInt(eps)+parseInt(h+1))+"</a>")*/
+            var yuieps = (parseInt(eps)+1);
+            //$('.download').append("<tr><td id=\"eps"+yuieps+"\"> Episode"+yuieps+"</td></tr>");
+            
+            $.ajax({
+                url:"https://www.saveoffline.com/process/?url=https://drive.google.com/file/d/"+anime[parseInt(h)]+"/view&type=json",
+                type:"GET",
+                dataType:"JSON",
+                success: function(s){
+                     //$('#ahay').html((s.urls).length);
+                     $('#yuidownloadapi').append("<tr><td width='30%'>Episode "+(yuieps++)+"</td><td></td></tr>");
+                     for (var i = 0; i < (s.urls).length; i++) {
+                        $('#yuidownloadapi td:last').append("<a target='_blank' href=\""+s.urls[i].id+"\">"+s.urls[i].label+"</a>");
+                        
+                     }
+                     $('#yuidownloadapi').append("</tr>");
+                     /*$.each(s.urls, function() {
+                        $('.download').append("<li><a href=\""+this.id+"\">"+this.label+"</a></li>");
+                        $('#ahay').append("<hr>");
+                     });*/
+
+                }   
+            });
+            //$('.download').append("</td></tr>");
+            }
+        var e=$(".--tab-eps");
+        for(var h=0;h<g;h++){
+            e.append("<a class='ganti-eps' data-id='"+h+"' data-eps='Episode "+(h+1)+"'>"+(h+1)+"</a>")
+        }
+        var f=$(".--show-video");
+        $(".ganti-eps").click(function(){
+            var playerInstance = jwplayer("player");
+        playerInstance.setup({
+            sources: [
+            {"type": "video/mp4", "label": "Akanime", "file": "https://www.googleapis.com/drive/v3/files/"+anime[parseInt($(this).data("id"))]+"?alt=media&key=AIzaSyCNHA-ypi4a2i_OHrpfbGAL9W-hrIV4_zI"}],
+            image: "https://drive.google.com/thumbnail?id="+anime[parseInt($(this).data("id"))]+"&authuser=0&sz=w1280-h720",
+            autostart: false,
+            controls: true,
+            width: "100%",
+            height: "100%",
+            aspectratio: "16:9",
+            abouttext: "Akanime",
+            aboutlink: "//akani.me/",       
+            tracks: [{ 
+                file: "", 
+                label: "Indonesia",
+                    kind: "captions",
+                    "default": true 
+                },{
+                    file: "", 
+                    label: "English",
+                    kind: "captions",
+                    "default": true
+                }],             
+        
+                logo: {
+                     file: 'https://1.bp.blogspot.com/-WGBtOfDSI7Q/XG3l2S_MvkI/AAAAAAAAAi8/SgGc_gNAcyUWCuB326iqzJuc4aRBsHsrQCK4BGAYYCw/s1600/logoputih.png',
+                    link: '//akani.me',         //link url on watermark image
+                    position: 'control-bar'      //position of watermark on player
+                },
+            
+                captions: {
+                            color: '#ffcc00',           
+                            backgroundOpacity: '0',
+                            edgeStyle: 'uniform'
+       
+                    }
+            
+    
+    });
+            $("#--title-anime").text($(this).data("eps"))
+        }
+        )
+    }
+    ())
+
+}
+
+);
+    
+
